@@ -55,12 +55,13 @@ export class LoginComponent {
 
   signInWithGoogle(): void {
     console.log('Iniciando signInWithGoogle');
-    const redirectUri = 'postmessage'; // Alinhar com o backend
+    const redirectUri = 'postmessage';
+    const clientId = environment.googleClientId || 'GOOGLE_CLIENT_ID'; // Fallback temporário
     console.log('Configurando initCodeClient com redirectUri:', redirectUri);
-    console.log('Usando client_id:', environment.googleClientId);
+    console.log('Usando client_id:', clientId);
 
     const client = (window as any).google.accounts.oauth2.initCodeClient({
-      client_id: environment.googleClientId,
+      client_id: clientId,
       scope: 'email profile openid',
       ux_mode: 'popup',
       redirect_uri: redirectUri,
