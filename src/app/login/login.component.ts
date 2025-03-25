@@ -56,7 +56,7 @@ export class LoginComponent {
   signInWithGoogle(): void {
     console.log('Iniciando signInWithGoogle');
     const redirectUri = 'postmessage';
-    const clientId = environment.googleClientId || 'GOOGLE_CLIENT_ID'; // Fallback temporário
+    const clientId = (window as any).process?.env?.GOOGLE_CLIENT_ID || environment.googleClientId;
     console.log('Configurando initCodeClient com redirectUri:', redirectUri);
     console.log('Usando client_id:', clientId);
 
