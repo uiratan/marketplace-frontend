@@ -1,0 +1,24 @@
+@if (error) {
+  <div class="error-container">
+    <strong>{{ getErrorTitle() }}</strong>
+    <br>
+
+    @if (getValidationErrors().length > 0) {
+      <ul>
+        @for (err of getValidationErrors(); track $index) {
+          <li>{{ err }}</li>
+        }
+      </ul>
+    } @else {
+      <p><strong>Error:</strong> {{ error.status }} - {{ error.statusText }}</p>
+      <p><strong>Message:</strong> {{ error.message }}</p>
+
+      @if (error.error?.message) {
+        <p><strong>Detail:</strong> {{ error.error.message }}</p>
+      }
+    }
+
+    <!-- Botão de fechamento -->
+    <button mat-button (click)="closeError()">Fechar</button>
+  </div>
+}

@@ -1,0 +1,74 @@
+/* You can add global styles to this file, and also import other style files */
+@import '@angular/material/prebuilt-themes/indigo-pink.css';
+// deeppurple-amber.css
+// indigo-pink.css
+// pink-bluegrey.css
+// purple-green.css
+// > Azure/Blue         [Preview: https://material.angular.io?theme=azure-blue]
+//   Rose/Red           [Preview: https://material.angular.io?theme=rose-red]
+//   Magenta/Violet     [Preview: https://material.angular.io?theme=magenta-violet]
+//   Cyan/Orange        [Preview: https://material.angular.io?theme=cyan-orange]
+
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+/* Estilos de CrudListComponent */
+.container {
+  padding: 30px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+h1 {
+  margin: 0;
+  color: #333;
+}
+
+/* Aumenta a especificidade para o botão mat-fab */
+.add-button {
+  background-color: #4caf50 !important; /* Verde */
+  color: white !important;
+}
+
+.filter {
+  width: 100%;
+}
+
+table {
+  width: 100%;
+}
+
+mat-paginator {
+  margin-top: 10px;
+}
+
+/* Estilos de CrudFormComponent */
+.full-width {
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+mat-dialog-content {
+  padding: 16px;
+}
+
+mat-dialog-actions {
+  padding: 8px 16px;
+}
+
+/* Estilo personalizado para o MatSnackBar */
+.custom-snackbar-success .mat-mdc-snack-bar-label,
+.custom-snackbar-success .mat-mdc-snack-bar-action {
+  background-color: #4caf50 !important;
+}
+
+/* Estilo para campos inválidos */
+.invalid {
+  border: 1px solid red;
+}

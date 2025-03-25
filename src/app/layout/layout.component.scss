@@ -1,0 +1,49 @@
+.main-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+mat-toolbar {
+  display: flex;
+  align-items: center;
+}
+
+.spacer {
+  flex: 1;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+mat-sidenav-container {
+  flex: 1;
+}
+
+mat-sidenav {
+  width: 200px;
+  padding: 8px;
+
+  mat-nav-list {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+
+    mat-icon {
+      width: 30px;
+      font-size: 30px;
+      line-height: 30px;
+      margin-right: 8px;
+    }
+  }
+}
+
+mat-sidenav-content {
+  flex: 1;
+  padding: 16px;
+  overflow: auto;
+}

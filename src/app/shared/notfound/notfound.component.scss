@@ -1,0 +1,17 @@
+.notfound-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  box-sizing: border-box;
+  margin: 0; /* Garante que não haja margens externas */
+  padding: 0; /* Remove qualquer padding que possa interferir */
+  overflow: hidden; /* Evita barras de rolagem caso a imagem tente exceder */
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Faz a imagem cobrir o espaço, cortando excessos */
+    /* ou use object-fit: contain; para manter a proporção sem cortar */
+  }
+}
