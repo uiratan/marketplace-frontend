@@ -1,5 +1,8 @@
 const fs = require('fs');
 
+console.log('Iniciando replace-env.js');
+console.log('Variáveis de ambiente disponíveis:', process.env);
+
 const envFile = 'src/environments/environment.production.ts';
 const googleClientId = process.env.GOOGLE_CLIENT_ID || 'MISSING_GOOGLE_CLIENT_ID';
 
