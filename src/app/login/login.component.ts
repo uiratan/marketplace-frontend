@@ -54,7 +54,11 @@ export class LoginComponent {
   }
 
   signInWithGoogle(): void {
+    console.log('Iniciando signInWithGoogle');
     const redirectUri = 'postmessage'; // Alinhar com o backend
+    console.log('Configurando initCodeClient com redirectUri:', redirectUri);
+    console.log('Usando client_id:', environment.googleClientId);
+
     const client = (window as any).google.accounts.oauth2.initCodeClient({
       client_id: environment.googleClientId,
       scope: 'email profile openid',
@@ -62,25 +66,40 @@ export class LoginComponent {
       redirect_uri: redirectUri,
       state: 'STATE_STRING',
       callback: (response: any) => {
+        console.log('Callback do Google recebido:', response);
         if (response.code) {
+          console.log('Código de autorização obtido:', response.code);
+          console.log('Enviando POST para o backend:', 'https://marketplace-gnq2.onrender.com/api/auth/google/callback');
           this.http
-            .post<{ token: string }>('https://marketplace-gnq2.onrender.com/api/auth/google/callback', { code: response.code }) // Tipar o Observable
+            .post<{ token: string }>('https://marketplace-gnq2.onrender.com/api/auth/google/callback', { code: response.code })
             .subscribe({
-              next: (response) => { // O tipo é inferido automaticamente de post<{ token: string }>
+              next: (response) => {
+                console.log('Resposta do backend recebida:', response);
+                console.log('Token JWT obtido:', response.token);
                 localStorage.setItem('auth_token', response.token);
+                console.log('Token salvo no localStorage, redirecionando para /');
                 this.router.navigate(['']);
               },
               error: (err) => {
                 this.errorMessage = 'Erro ao fazer login com Google.';
                 console.error('Erro na requisição ao backend:', err);
+                console.log('Detalhes do erro:', {
+                  status: err.status,
+                  statusText: err.statusText,
+                  url: err.url,
+                  message: err.message
+                });
               },
             });
         } else {
           this.errorMessage = 'Erro ao obter código de autorização.';
-          console.error('Erro na resposta do Google:', response);
+          console.error('Erro na resposta do Google (sem código):', response);
+          console.log('Detalhes da resposta:', response);
         }
       },
     });
+
+    console.log('Solicitando código de autorização ao Google');
     client.requestCode();
   }
 }
